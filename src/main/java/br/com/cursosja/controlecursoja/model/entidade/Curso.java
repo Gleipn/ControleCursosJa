@@ -3,15 +3,18 @@ package br.com.cursosja.controlecursoja.model.entidade;
 public class Curso {
 	private long id;
 	private String nome;
+	private double valor;
 	
 	public Curso(){
 		this.id = 0;
 		this.nome = "";
+		this.valor = 0.0;
 	}
 	
-	public Curso(long codigo, String n) {
+	public Curso(long codigo, String n, double v) {
 		this.id = codigo;
 		this.nome = n;
+		this.valor = v;
 	}
 	
 	public void setId(long i) {
@@ -28,5 +31,13 @@ public class Curso {
 	
 	public String getNome() {
 		return this.nome;
+	}
+	
+	public void setValor(double valor) {
+		this.valor = valor;
+	}
+	
+	public double getValor() {
+		return this.valor;
 	}
 }

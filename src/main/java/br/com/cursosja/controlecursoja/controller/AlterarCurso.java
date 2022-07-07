@@ -10,15 +10,15 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class IncluirCurso
+ * Servlet implementation class AlterarCurso
  */
-public class IncluirCurso extends HttpServlet {
+public class AlterarCurso extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public IncluirCurso() {
+    public AlterarCurso() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,31 +36,33 @@ public class IncluirCurso extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//doGet(request, response);
-			
-			String nome = request.getParameter("nomecurso");
-			String strValor = request.getParameter("mensalidade");
-			
-			double mensalidade = 0.0;
-			
-			try {
-				mensalidade = Double.parseDouble(strValor);	
-			} catch(Exception e) {
-				
-			}
-			
-			//System.out.println("nome");
-			//System.out.println("strValor");
-			
-			Curso c = new Curso();
-			c.setNome(nome);
-			c.setValor(mensalidade);
-			
-			CursoDao dao = new CursoDao();
-			
-			boolean retorno = dao.incluir(c);
-			
-			response.sendRedirect("lista_curso.jsp");
+		String nome = request.getParameter("nome");
+		String strValor = request.getParameter("mensalidade");
+		
+		long id = 0;
+		
+		try {
+			id = Long.parseLong(request.getParameter("id"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		double valor = 0.0;
+		try {
+			valor = Double.parseDouble(strValor);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		Curso c = new Curso();
+		c.setId(id);
+		c.setNome(nome);
+		c.setValor(valor);
+		
+		CursoDao dao = new CursoDao();
+		boolean retorno = dao.alterar(c);
+		
+		response.sendRedirect("lista_curso.jsp");
 	}
 
 }

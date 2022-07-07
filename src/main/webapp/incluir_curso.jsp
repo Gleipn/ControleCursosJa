@@ -12,7 +12,7 @@
 		<input type="text" name="nomecurso"
 		placeholder="Informe o nome do curso" required/><br>
 		
-		<input type="number" name="valor"
+		<input type="number" name="mensalidade" step="0.01"
 		placeholder="Informe o valor" required/><br>
 		
 		<input type="submit" value="ok"/>

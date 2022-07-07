@@ -2,23 +2,24 @@ package br.com.cursosja.controlecursoja.controller;
 
 import java.io.IOException;
 
-import br.com.cursosja.controlecursoja.model.dao.CursoDao;
-import br.com.cursosja.controlecursoja.model.entidade.Curso;
+import br.com.cursosja.controlecursoja.model.dao.UsuarioDao;
+import br.com.cursosja.controlecursoja.model.entidade.Usuario;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class IncluirCurso
+ * Servlet implementation class LoginServlet
  */
-public class IncluirCurso extends HttpServlet {
+public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public IncluirCurso() {
+    public LoginServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,31 +37,27 @@ public class IncluirCurso extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//doGet(request, response);
+		String login = request.getParameter("login");
+		String senha = request.getParameter("senha");
+		
+		UsuarioDao dao = new UsuarioDao();
+		
+		Usuario usr = dao.logar(login, senha);
+		
+		String destino = "";
+		if(usr != null) {
+			//$_SESSION => PHP
+			HttpSession sessao = request.getSession();
+			sessao.setAttribute("usuarioLogado", usr);
 			
-			String nome = request.getParameter("nomecurso");
-			String strValor = request.getParameter("mensalidade");
-			
-			double mensalidade = 0.0;
-			
-			try {
-				mensalidade = Double.parseDouble(strValor);	
-			} catch(Exception e) {
-				
-			}
-			
-			//System.out.println("nome");
-			//System.out.println("strValor");
-			
-			Curso c = new Curso();
-			c.setNome(nome);
-			c.setValor(mensalidade);
-			
-			CursoDao dao = new CursoDao();
-			
-			boolean retorno = dao.incluir(c);
-			
-			response.sendRedirect("lista_curso.jsp");
+			System.out.println(usr.getLogin());
+			destino = "area_interna.jsp";
+		} else {
+			System.out.println("Usuário inexistente");
+			destino = "login.jsp";
+		}
+		
+		response.sendRedirect(destino);
 	}
 
 }
