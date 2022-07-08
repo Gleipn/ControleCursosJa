@@ -10,7 +10,7 @@ import br.com.cursosja.controlecursoja.model.entidade.Professor;
 public class ProfessorDao extends Conexao{
 	
 	public boolean incluir(Professor professor) {
-		boolean ok = false;
+		boolean ok = true;
 		String sql = "insert into professor (nome, celular, valorhora) " +
 								"values (?, ?, ?) ";
 		
@@ -24,17 +24,16 @@ public class ProfessorDao extends Conexao{
 			ps.setString(2, professor.getCelular());
 			ps.setDouble(3, professor.getValorHora());
 			
-			ok = ps.execute();
+			ps.execute();	
 			
 		} catch(Exception e) {
 			e.printStackTrace();
-			
 			ok = false;
 		} finally {
 			fecharConexao();
 		}
 		
-		return false;
+		return ok;
 	}
 	
 	public List<Professor> listar(String nomeBusca){

@@ -7,6 +7,7 @@
 <title>Incluir Professor</title>
 </head>
 <body>
+<jsp:include page="verificaSessao.jsp" />
 	<form method="post" action="IncluirProfessor">
 	
 		<input type="text" name="inputNome"

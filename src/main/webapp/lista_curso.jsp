@@ -12,7 +12,7 @@
 <title>Listagem de Cursos</title>
 </head>
 <body>
-		
+<jsp:include page="verificaSessao.jsp" />
 		<%
 			String nomeBusca = "";
 			
@@ -22,6 +22,7 @@
 		%>
 		
 		<h1>Lista de cursos</h1>
+		<a href="incluir_curso.jsp">Incluir Curso</a><br><br>
 		
 		<form method="post" action="lista_curso.jsp">
 			<input type="text" name="nomeBusca" value="<%= nomeBusca %>" />

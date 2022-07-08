@@ -7,6 +7,7 @@
 <title>Incluir curso</title>
 </head>
 <body>
+<jsp:include page="verificaSessao.jsp" />
 	<form method="post" action="IncluirCurso">
 	
 		<input type="text" name="nomecurso"
