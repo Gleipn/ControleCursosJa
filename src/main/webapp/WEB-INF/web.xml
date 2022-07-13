@@ -109,4 +109,14 @@
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/LogoutServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>IncluirTurma</display-name>
+    <servlet-name>IncluirTurma</servlet-name>
+    <servlet-class>br.com.cursosja.controlecursoja.controller.IncluirTurma</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>IncluirTurma</servlet-name>
+    <url-pattern>/IncluirTurma</url-pattern>
+  </servlet-mapping>
 </web-app>

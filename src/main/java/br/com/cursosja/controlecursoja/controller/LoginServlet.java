@@ -50,7 +50,7 @@ public class LoginServlet extends HttpServlet {
 			HttpSession sessao = request.getSession();
 			sessao.setAttribute("usuarioLogado", usr);
 			
-			System.out.println(usr.getLogin());
+			//System.out.println(usr.getLogin());
 			destino = "area_interna.jsp";
 		} else {
 			System.out.println("Usuário inexistente");

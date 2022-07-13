@@ -39,9 +39,9 @@ public class IniciarAlterarProfessor extends HttpServlet {
 		
 		ProfessorDao dao = new ProfessorDao();
 		
-		Professor c = dao.buscar(id);
+		Professor p = dao.buscar(id);
 		
-		request.setAttribute("professor", c);
+		request.setAttribute("professor", p);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("editar_professor.jsp");
 		rd.forward(request, response);

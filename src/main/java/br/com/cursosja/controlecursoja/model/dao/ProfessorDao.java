@@ -47,15 +47,15 @@ public class ProfessorDao extends Conexao{
 			
 			ResultSet rs = ps.executeQuery();
 			
-			Professor c;
+			Professor p;
 			while(rs.next()) {
-				c = new Professor();
-				c.setId(rs.getLong("idProfessor"));
-				c.setNome(rs.getString("nome"));
-				c.setValorHora(rs.getDouble("valorHora"));
-				c.setCelular(rs.getString("celular"));
+				p = new Professor();
+				p.setId(rs.getLong("idProfessor"));
+				p.setNome(rs.getString("nome"));
+				p.setValorHora(rs.getDouble("valorHora"));
+				p.setCelular(rs.getString("celular"));
 				
-				lista.add(c);
+				lista.add(p);
 			}
 			
 		} catch (Exception e) {
@@ -68,7 +68,7 @@ public class ProfessorDao extends Conexao{
 	}
 
 	public Professor buscar(long id) {
-		Professor c = null;
+		Professor p = null;
 		
 		String sql = "select * from professor where idprofessor = ?";
 		
@@ -79,11 +79,11 @@ public class ProfessorDao extends Conexao{
 			ResultSet rs = ps.executeQuery();
 			
 			if(rs.next()) {
-				c = new Professor();
-				c.setId(rs.getLong("idProfessor"));
-				c.setNome(rs.getString("nome"));
-				c.setCelular(rs.getString("celular"));
-				c.setValorHora(rs.getDouble("valorHora"));
+				p = new Professor();
+				p.setId(rs.getLong("idProfessor"));
+				p.setNome(rs.getString("nome"));
+				p.setCelular(rs.getString("celular"));
+				p.setValorHora(rs.getDouble("valorHora"));
 				
 			}
 		} catch(Exception e) {
@@ -92,10 +92,10 @@ public class ProfessorDao extends Conexao{
 			fecharConexao();
 		}
 		
-		return c;
+		return p;
 	}
 
-	public boolean alterar(Professor c) {
+	public boolean alterar(Professor p) {
 		boolean ok = true;
 		
 		String sql = "update professor set nome = ?, celular = ?, valorhora = ? "
@@ -103,10 +103,10 @@ public class ProfessorDao extends Conexao{
 		
 		try {
 			PreparedStatement ps = criarConexao().prepareStatement(sql);
-			ps.setString(1, c.getNome());
-			ps.setString(2, c.getCelular());
-			ps.setDouble(3, c.getValorHora());
-			ps.setLong(4, c.getId());
+			ps.setString(1, p.getNome());
+			ps.setString(2, p.getCelular());
+			ps.setDouble(3, p.getValorHora());
+			ps.setLong(4, p.getId());
 			
 			ps.execute();
 			

@@ -42,14 +42,14 @@ public class IncluirProfessor extends HttpServlet {
 		String celular = request.getParameter("inputCelular");
 		double valorHora = Double.parseDouble(request.getParameter("inputValorHora"));
 		
-		Professor c = new Professor();
-		c.setNome(nome);
-		c.setCelular(celular);
-		c.setValorHora(valorHora);
+		Professor p = new Professor();
+		p.setNome(nome);
+		p.setCelular(celular);
+		p.setValorHora(valorHora);
 		
 		ProfessorDao dao = new ProfessorDao();
 		
-		boolean retorno = dao.incluir(c);
+		boolean retorno = dao.incluir(p);
 		
 		response.sendRedirect("lista_professor.jsp");
 		

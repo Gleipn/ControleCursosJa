@@ -39,11 +39,11 @@
 			
 			List<Professor> professores = daoP.listar("");
 			
-			for(Professor c: professores) {
+			for(Professor p: professores) {
 		
 		%>
 		
-		<option value="<%= c.getId() %>"><%= c.getNome() %></option>
+		<option value="<%= p.getId() %>"><%= p.getNome() %></option>
 		
 		<% } %>
 		</select>

@@ -46,16 +46,16 @@
 					List<Professor> professores = dao.listar(nomeBusca);
 					
 					DecimalFormat fmt = new DecimalFormat("###,##0.00");
-					for (Professor c: professores) {
-						String strValor = fmt.format(c.getValorHora());
+					for (Professor p: professores) {
+						String strValor = fmt.format(p.getValorHora());
 				%>
 				<tr>
-					<td><%= c.getNome() %></td>
-					<td><%= c.getCelular() %></td>
+					<td><%= p.getNome() %></td>
+					<td><%= p.getCelular() %></td>
 					<td><%= strValor %></td>
 					<td>
-					<a href="IniciarAlterarProfessor?id=<%= c.getId() %>">Alterar</a>
-					<a href="ExcluirProfessor?id=<%= c.getId() %>" 
+					<a href="IniciarAlterarProfessor?id=<%= p.getId() %>">Alterar</a>
+					<a href="ExcluirProfessor?id=<%= p.getId() %>" 
 						onclick="return confirm('Deseja excluir esse registro?');">
 							Excluir</a>
 					</td>
