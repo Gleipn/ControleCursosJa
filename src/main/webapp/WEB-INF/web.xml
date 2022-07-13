@@ -119,4 +119,34 @@
     <servlet-name>IncluirTurma</servlet-name>
     <url-pattern>/IncluirTurma</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ExcluirTurma</display-name>
+    <servlet-name>ExcluirTurma</servlet-name>
+    <servlet-class>br.com.cursosja.controlecursoja.controller.ExcluirTurma</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ExcluirTurma</servlet-name>
+    <url-pattern>/ExcluirTurma</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AlterarTurma</display-name>
+    <servlet-name>AlterarTurma</servlet-name>
+    <servlet-class>br.com.cursosja.controlecursoja.controller.AlterarTurma</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AlterarTurma</servlet-name>
+    <url-pattern>/AlterarTurma</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>IniciarAlterarTurma</display-name>
+    <servlet-name>IniciarAlterarTurma</servlet-name>
+    <servlet-class>br.com.cursosja.controlecursoja.controller.IniciarAlterarTurma</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>IniciarAlterarTurma</servlet-name>
+    <url-pattern>/IniciarAlterarTurma</url-pattern>
+  </servlet-mapping>
 </web-app>
