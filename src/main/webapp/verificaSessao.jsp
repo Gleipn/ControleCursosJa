@@ -4,7 +4,7 @@
     <%
     	if(session.getAttribute("usuarioLogado") == null){
     		//response.sendRedirect("index.jsp");
-    		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+    		RequestDispatcher rd = request.getRequestDispatcher("./login.jsp");
     		rd.forward(request, response);
     	}
     

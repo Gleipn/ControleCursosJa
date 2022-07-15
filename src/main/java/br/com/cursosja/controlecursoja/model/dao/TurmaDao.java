@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.cursosja.controlecursoja.model.entidade.Curso;
+import br.com.cursosja.controlecursoja.model.entidade.Professor;
 import br.com.cursosja.controlecursoja.model.entidade.Turma;
 
 public class TurmaDao extends Conexao {
@@ -36,13 +38,18 @@ public class TurmaDao extends Conexao {
 	public List<Turma> listar(){
 		List<Turma> turmas = new ArrayList<Turma>();
 		
-		String sql = "select * from turma";
-		
+		String sql = "select t.*, c.nome as nomecurso, p.nome as nomeprof from turma t "
+				+ "inner join curso c on c.idcurso = t.curso_id "
+				+ "inner join professor p on p.idprofessor = t.professor_id "
+				+ "order by t.datainicio";
+				
 		try {
 			PreparedStatement ps = criarConexao().prepareStatement(sql);
 			
 			ResultSet rs = ps.executeQuery();
 			Turma t = null;
+			Curso c = null;
+			Professor p = null;
 			
 			while(rs.next()) {
 				t = new Turma();
@@ -50,6 +57,16 @@ public class TurmaDao extends Conexao {
 				t.setId(rs.getLong("idturma"));
 				t.setDataInicio(rs.getDate("datainicio"));
 				t.setDataFim(rs.getDate("datafim"));
+				
+				c = new Curso();
+				c.setId(rs.getLong("curso_id"));
+				c.setNome(rs.getString("nomecurso"));
+				t.setCurso(c);
+				
+				p = new Professor();
+				p.setId(rs.getLong("professor_id"));
+				p.setNome(rs.getString("nomeprof"));
+				t.setProfessor(p);
 				
 				turmas.add(t);
 			}

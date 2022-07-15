@@ -14,7 +14,7 @@
 	%>
 	<h1>Olá, <%= usuario.getNome() %></h1><br>
 	
-	<a href="incluir_turma.jsp">Incluir Turma</a>
+	<a href="lista_turma.jsp">Listar Turma</a>
 	
 	<a href="lista_curso.jsp">Listar Curso</a><br>
 	

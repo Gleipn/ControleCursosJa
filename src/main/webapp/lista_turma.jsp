@@ -3,6 +3,7 @@
 <%@ page import="br.com.cursosja.controlecursoja.model.dao.TurmaDao" %>
 <%@ page import="br.com.cursosja.controlecursoja.model.entidade.Turma" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 
 <!DOCTYPE html>
 <html>
@@ -12,7 +13,7 @@
 </head>
 <body>
 	<h1>Lista de Turmas</h1>
-	
+	<a href="incluir_turma.jsp">Incluir Turma</a><br>
 	<table>
 		<thead>
 			<tr>
@@ -27,13 +28,14 @@
 			<%
 				TurmaDao dao = new TurmaDao();
 				List<Turma> turmas = dao.listar();
+				SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
 				for (Turma t: turmas) {
 			%>
 			<tr>
-				<td></td>
-				<td><%= t.getDataInicio() %></td>
-				<td><%= t.getDataFim() %></td>
-				<td></td>
+				<td><%= t.getCurso().getNome() %></td>
+				<td><%= fmt.format(t.getDataInicio()) %></td>
+				<td><%= fmt.format(t.getDataFim()) %></td>
+				<td><%= t.getProfessor().getNome() %></td>
 			</tr>
 			<% } %>
 		</tbody>
